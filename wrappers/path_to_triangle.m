@@ -8,11 +8,10 @@ function s = path_to_triangle()
   % See also: triangle
 
   if ispc
-    warning([ ...
-      'Dear Ladislav, is there a standard place to put executables on a pc?' ...
-      'Could you put triangle there and change this accordingly?' ...
-      'Thanks, Alec']);
-    s = 'c:/prg/lib/triangle/Release/triangle.exe';
+    s =  which('triangle.exe');
+    if isempty(s)
+        s = 'triangle.exe';
+    end       
   elseif isunix || ismac
     % I guess this means linux
     [status, s] = system('which triangle');
